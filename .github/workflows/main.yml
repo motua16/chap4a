@@ -26,7 +26,7 @@ jobs:
         run: az config set extension.use_dynamic_install=yes_without_prompt
 
       - name: Attach workspace
-        run: az ml folder attach -w "ml-ws" -g "azure-ml-1"
+        run: az ml folder attach -w "azure-ml-1" -g "rg-1-azure-ml"
 
       - name: Retrieve the model
         run: az ml model download -t "." --model-id "distilbert-model"
