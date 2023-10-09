@@ -31,7 +31,7 @@ jobs:
         run: az ml folder attach -w "azure-ml-1" -g "rg-1-azure-ml"
 
       - name: Retrieve the model
-        run: az ml model download -t "." --model-id "distilbert-model"
+        run: az ml model download -t "." --model-id "distilbert-model:1"
 
       - name: Build Flask app container
         uses: docker/build-push-action@v2
