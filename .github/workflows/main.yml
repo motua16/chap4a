@@ -16,7 +16,9 @@ jobs:
         run: |
           curl -sL https://aka.ms/InstallAzureCLIDeb |sudo bash
         if: runner.os == 'Linux' || runner.os == 'macOS'
-
+      - name: Install Azure Machine Learning Extension
+        run: |
+          az extension add -n azure-cli-ml
       - name: Authenticate with Azure
         uses: azure/login@v1
         with:
