@@ -33,10 +33,15 @@ jobs:
       - name: Retrieve the model
         run: az ml model download -t "." --model-id "distilbert-model:1"
 
+      - name: Authenticate to Docker hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Build Flask app container
         uses: docker/build-push-action@v2
         with:
           context: ./
           file: ./Dockerfile
-          push: false
-          tags: alfredodeza/flask-roberta:latest
+          push: true
+          tags: motua16/flask-distilbert:latest
